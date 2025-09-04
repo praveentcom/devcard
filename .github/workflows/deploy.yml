@@ -1,0 +1,163 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup SSH key
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.CD_SSH_PRIVATE_KEY }}
+
+      - name: Add server to known hosts
+        run: |
+          ssh-keyscan -H ${{ secrets.CD_SSH_IP }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.CD_SSH_USERNAME }}@${{ secrets.CD_SSH_IP }} << 'DEPLOY_SCRIPT'
+            set -e
+            
+            # Source the user's profile to load Node.js/npm
+            if [ -f ~/.bashrc ]; then
+              source ~/.bashrc
+            fi
+            if [ -f ~/.profile ]; then
+              source ~/.profile
+            fi
+            if [ -f ~/.nvm/nvm.sh ]; then
+              source ~/.nvm/nvm.sh
+            fi
+
+            # Variables from GitHub secrets
+            WEBSITE_URL="${{ secrets.CD_SSH_WEBSITE_URL }}"
+            REPO_OWNER_REPO="${{ github.repository }}"
+            GH_REPO_TOKEN="${{ secrets.GH_REPO_TOKEN }}"
+
+            # Construct repo URL based on token presence
+            if [ -n "$GH_REPO_TOKEN" ]; then
+              REPO_URL="https://${GH_REPO_TOKEN}@github.com/${REPO_OWNER_REPO}.git"
+              echo "🔒 Using authenticated HTTPS for private repository"
+            else
+              REPO_URL="https://github.com/${REPO_OWNER_REPO}.git"
+              echo "📖 Using anonymous HTTPS for public repository"
+            fi
+            
+            APP_DIR="./apps/$WEBSITE_URL"
+            NGINX_SITE="/etc/nginx/sites-available/$WEBSITE_URL"
+            NGINX_ENABLED="/etc/nginx/sites-enabled/$WEBSITE_URL"
+            
+            echo "🚀 Starting deployment for $WEBSITE_URL..."
+            
+            # Check if npm is available
+            if ! command -v npm &> /dev/null; then
+              echo "❌ npm command not found. Checking common Node.js installation paths..."
+              
+              # Try to find and use Node.js from common installation paths
+              if [ -f /usr/local/bin/npm ]; then
+                export PATH="/usr/local/bin:$PATH"
+                echo "✅ Found npm at /usr/local/bin/npm"
+              elif [ -f /opt/nodejs/bin/npm ]; then
+                export PATH="/opt/nodejs/bin:$PATH"
+                echo "✅ Found npm at /opt/nodejs/bin/npm"
+              elif [ -f ~/.nvm/versions/node/*/bin/npm ]; then
+                NVM_NODE_PATH=$(find ~/.nvm/versions/node -name "npm" | head -1 | xargs dirname)
+                export PATH="$NVM_NODE_PATH:$PATH"
+                echo "✅ Found npm via nvm at $NVM_NODE_PATH"
+              else
+                echo "❌ npm not found in common paths. Please ensure Node.js is properly installed."
+                exit 1
+              fi
+            else
+              echo "✅ npm found at: $(which npm)"
+            fi
+            
+            # Create app directory if it doesn't exist
+            sudo mkdir -p $APP_DIR
+            cd $APP_DIR
+            
+            # Clone or update repository
+            if [ -d ".git" ]; then
+              echo "📦 Updating existing repository..."
+              git remote set-url origin $REPO_URL
+              git fetch origin
+              git reset --hard origin/main
+            else
+              echo "📦 Cloning repository..."
+              git clone $REPO_URL .
+            fi
+            
+            # Preserve existing data directory
+            if [ -d "data" ]; then
+              echo "💾 Preserving existing data directory..."
+            else
+              echo "📝 No existing data directory found."
+            fi
+            
+            # Create .env from .env.example if not exists
+            if [ ! -f ".env" ] && [ -f ".env.example" ]; then
+              echo "⚙️  Creating .env from .env.example..."
+              cp .env.example .env
+            fi
+            
+            # Install dependencies
+            echo "📋 Installing dependencies..."
+            npm ci --production
+            
+            # Initialize data if needed (only if data directory doesn't exist)
+            if [ ! -d "data" ]; then
+              echo "🔧 Initializing data directory..."
+              npm run init -- --skip
+            fi
+            
+            # Build the application
+            echo "🏗️  Building application..."
+            npm run build
+            
+            # Check if NGINX configuration exists
+            if [ ! -f "$NGINX_SITE" ]; then
+              echo "❌ NGINX configuration not found at $NGINX_SITE"
+              echo "Please create NGINX configuration manually before deployment."
+              echo "See .github/DEPLOYMENT.md for setup instructions."
+              exit 1
+            else
+              echo "✅ NGINX configuration found."
+            fi
+            
+            # Test NGINX configuration
+            echo "🔍 Testing NGINX configuration..."
+            sudo nginx -t
+            
+            # Stop existing PM2 process if running
+            pm2 stop $WEBSITE_URL 2>/dev/null || true
+            pm2 delete $WEBSITE_URL 2>/dev/null || true
+            
+            # Start application with PM2
+            echo "🚀 Starting application with PM2..."
+            pm2 start npm --name "$WEBSITE_URL" -- run start
+            pm2 save
+            
+            # Reload NGINX
+            sudo systemctl reload nginx
+            
+            echo "✅ Deployment completed successfully!"
+            echo "🌐 Website should be available at: https://$WEBSITE_URL"
+            
+            # Show PM2 status
+            pm2 list
+            
+          DEPLOY_SCRIPT
+
+      - name: Deployment Status
+        run: |
+          echo "🎉 Deployment completed!"
+          echo "📊 Check your website at: https://${{ secrets.CD_SSH_WEBSITE_URL }}"
