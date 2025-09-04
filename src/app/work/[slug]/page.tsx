@@ -12,7 +12,7 @@ import {
 import { TagBadge } from "@/components/ui/tag-badge";
 import { profileData } from "@/data/profile";
 import { URLS } from "@/lib/constants/urls";
-import { formatDateShort } from "@/lib/helpers/markdown";
+import { formatDateShort } from "@/lib/helpers/date";
 import {
   createNotFoundMetadata,
   createPageMetadata,

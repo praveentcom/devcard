@@ -1,6 +1,6 @@
 import DOMPurify from "isomorphic-dompurify";
 
-import { parseMarkdown } from "@/lib/helpers/markdown";
+import parseMarkdown from "@/lib/helpers/markdown/parseMarkdown";
 import { cn } from "@/lib/utils";
 
 interface MarkdownProps {
@@ -40,6 +40,14 @@ export function Markdown({ content, muted = true, className }: MarkdownProps) {
       "img",
       "div",
       "span",
+      "sup",
+      "kbd",
+      "table",
+      "thead",
+      "tbody",
+      "tr",
+      "th",
+      "td",
     ],
     ALLOWED_ATTR: [
       "href",

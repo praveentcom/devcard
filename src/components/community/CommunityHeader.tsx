@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ContributionTypeBadge } from "@/components/ui/contribution-type-badge";
 import type { CommunityIndexItem } from "@/lib/helpers/community";
+import { formatDate } from "@/lib/helpers/date";
 import { generateArticlePlaceholderImage } from "@/lib/helpers/image";
-import { formatDate } from "@/lib/helpers/markdown";
 
 interface CommunityHeaderProps {
   contribution: CommunityIndexItem;

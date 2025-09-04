@@ -1,6 +1,6 @@
 import { PrefetchLink } from "@/components/ui/prefetch-link";
 import { URLS } from "@/lib/constants/urls";
-import { formatDate } from "@/lib/helpers/markdown";
+import { formatDate } from "@/lib/helpers/date";
 import { Article } from "@/types/article";
 
 export type ArticleLike = Pick<

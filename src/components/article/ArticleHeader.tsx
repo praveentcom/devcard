@@ -4,8 +4,8 @@ import Image from "next/image";
 import { CategoryBadge } from "@/components/ui/category-badge";
 import { TagBadge } from "@/components/ui/tag-badge";
 import { PROFILE_NAME } from "@/lib/helpers/config";
+import { formatDate } from "@/lib/helpers/date";
 import { generateArticlePlaceholderImage } from "@/lib/helpers/image";
-import { formatDate } from "@/lib/helpers/markdown";
 
 import type { ArticleLike } from "./ArticleSummaryCard";
 

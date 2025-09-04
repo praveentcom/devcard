@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import { BlurIn } from "@/components/motion-primitives";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { Button } from "@/components/ui/button";
-import { formatDateShort } from "@/lib/helpers/markdown";
+import { formatDateShort } from "@/lib/helpers/date";
 
 export function PageWithStructuredData({
   structuredData,

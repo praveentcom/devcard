@@ -5,7 +5,7 @@ import { getContributionTypeLabel } from "@/components/ui/contribution-type-badg
 import { PrefetchLink } from "@/components/ui/prefetch-link";
 import { URLS } from "@/lib/constants/urls";
 import { CommunityIndexItem } from "@/lib/helpers/community";
-import { formatDate } from "@/lib/helpers/markdown";
+import { formatDate } from "@/lib/helpers/date";
 
 export function CommunitySummaryCard({
   contribution,

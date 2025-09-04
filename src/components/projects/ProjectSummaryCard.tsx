@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { URLS } from "@/lib/constants/urls";
-import { formatDateShort } from "@/lib/helpers/markdown";
+import { formatDateShort } from "@/lib/helpers/date";
 import { Project } from "@/types/project";
 
 interface ProjectCardProps {

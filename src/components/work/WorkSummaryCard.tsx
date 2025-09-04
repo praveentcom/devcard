@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { PrefetchLink } from "@/components/ui/prefetch-link";
 import { URLS } from "@/lib/constants/urls";
-import { formatDateShort } from "@/lib/helpers/markdown";
+import { formatDateShort } from "@/lib/helpers/date";
 import { WorkExperience } from "@/types/work";
 
 export function WorkSummaryCard({

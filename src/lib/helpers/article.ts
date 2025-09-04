@@ -8,7 +8,7 @@ import remarkGfm from "remark-gfm";
 import { z } from "zod";
 
 import { generateArticlePlaceholderImage } from "@/lib/helpers/image";
-import { calculateReadTime } from "@/lib/helpers/markdown";
+import getReadTime from "@/lib/helpers/markdown/getReadTime";
 
 const ARTICLE_CONTENT_DIR = path.join(process.cwd(), "data", "articles");
 
@@ -107,7 +107,7 @@ export function getAllArticleSlugs(): ArticleIndexItem[] {
     const parsed = ArticleFrontmatterSchema.parse(data);
     const year = extractYearFromPath(fullPath);
     const slug = deriveSlug(parsed.slug, fullPath);
-    const readTime = calculateReadTime(content);
+    const readTime = getReadTime(content);
 
     const normalized: ArticleFrontmatter = {
       title: parsed.title,
@@ -175,7 +175,7 @@ export async function getArticleBySlugCompiled(slug: string): Promise<{
       : undefined,
     match,
   );
-  const readTime = calculateReadTime(raw);
+  const readTime = getReadTime(raw);
 
   const parsed = ArticleFrontmatterSchema.parse(frontmatter);
   const meta: ArticleFrontmatter = {
@@ -218,7 +218,7 @@ export function getArticleBySlugRaw(
   const year = extractYearFromPath(match);
   const parsed = ArticleFrontmatterSchema.parse(data);
   const ensuredSlug = deriveSlug(parsed.slug, match);
-  const readTime = calculateReadTime(content);
+  const readTime = getReadTime(content);
   const meta: ArticleFrontmatter = {
     title: parsed.title,
     description: parsed.description,
@@ -254,7 +254,7 @@ export function getAllArticlesIndex(limit?: number): ArticleIndexItem[] {
       private: parsed.private,
       ogImage: parsed.ogImage,
       image: parsed.image || generateArticlePlaceholderImage(parsed.title),
-      readTime: calculateReadTime(content),
+      readTime: getReadTime(content),
       year: extractYearFromPath(fullPath),
       slug: deriveSlug(parsed.slug, fullPath),
     };
