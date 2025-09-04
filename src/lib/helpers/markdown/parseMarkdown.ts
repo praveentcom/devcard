@@ -142,7 +142,7 @@ function parseMarkdown(content: string): string {
    */
   codeBlocks.forEach((codeBlock, index) => {
     processedContent = processedContent.replace(
-      `__CODE_BLOCK_${index}__`,
+      `CODEBLOCK${index}`,
       codeBlock,
     );
   });

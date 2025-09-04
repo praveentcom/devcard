@@ -190,7 +190,7 @@ function processCodeBlocks(content: string): {
       </div>`;
 
       codeBlocks.push(codeBlock);
-      return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+      return `CODEBLOCK${codeBlocks.length - 1}`;
     },
   );
 
