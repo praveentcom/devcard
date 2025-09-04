@@ -34,7 +34,14 @@ export async function generateMetadata(): Promise<Metadata> {
   const metadata = createPageMetadata({
     title: `Bio`,
     description: `Complete biography and professional background. ${profileData.profile.description}`,
-    keywords: ["bio", "biography", "professional background", "work experience", "education", "projects"],
+    keywords: [
+      "bio",
+      "biography",
+      "professional background",
+      "work experience",
+      "education",
+      "projects",
+    ],
     url: URLS.BIO(),
     image: getRouteSeoImage(URLS.BIO()),
   });

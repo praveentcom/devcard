@@ -49,7 +49,14 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "About",
     description:
       "Learn more about my background, experiences, and what drives me professionally and personally.",
-    keywords: ["about", "background", "experience", "professional", "personal", "biography"],
+    keywords: [
+      "about",
+      "background",
+      "experience",
+      "professional",
+      "personal",
+      "biography",
+    ],
     url: URLS.ABOUT(),
     image: getRouteSeoImage(URLS.ABOUT()),
   });

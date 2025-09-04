@@ -48,7 +48,14 @@ export async function generateMetadata(): Promise<Metadata> {
     title: `Cover letter`,
     description:
       "A personalized introduction highlighting my experience and interest in joining your team.",
-    keywords: ["cover letter", "introduction", "experience", "skills", "professional", "career"],
+    keywords: [
+      "cover letter",
+      "introduction",
+      "experience",
+      "skills",
+      "professional",
+      "career",
+    ],
     url: URLS.COVER(),
     image: getRouteSeoImage(URLS.COVER()),
   });

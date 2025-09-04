@@ -10,10 +10,10 @@ function generateRSSFeed(): string {
 
   const rssItems = articles
     .map((article) => {
-      const imageEnclosure = article.imageData 
+      const imageEnclosure = article.imageData
         ? `<enclosure url="${article.imageData.url}" type="${article.imageData.type}" length="${article.imageData.length}" />`
         : "";
-      
+
       return `
     <item>
       <title><![CDATA[${article.title}]]></title>

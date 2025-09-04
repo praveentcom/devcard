@@ -40,7 +40,14 @@ export function getRSSFeedMetadata() {
     managingEditor: profileData.profile.email || "",
     webMaster: profileData.profile.email || "",
     generator: "DevCard RSS Feed Generator",
-    categories: ["articles", "blog", "development", "technology", "programming", "tutorials"],
+    categories: [
+      "articles",
+      "blog",
+      "development",
+      "technology",
+      "programming",
+      "tutorials",
+    ],
     copyright: `Copyright ${new Date().getFullYear()} ${PROFILE_NAME}. All rights reserved.`,
     image: {
       url: profileData.profile.image || configData.seo.favicon?.png || "",
@@ -58,22 +65,22 @@ export function getRSSFeedMetadata() {
  * @returns MIME type string
  */
 function getImageMimeType(imageUrl: string): string {
-  const extension = imageUrl.toLowerCase().split('.').pop() || '';
-  
+  const extension = imageUrl.toLowerCase().split(".").pop() || "";
+
   switch (extension) {
-    case 'jpg':
-    case 'jpeg':
-      return 'image/jpeg';
-    case 'png':
-      return 'image/png';
-    case 'gif':
-      return 'image/gif';
-    case 'webp':
-      return 'image/webp';
-    case 'svg':
-      return 'image/svg+xml';
+    case "jpg":
+    case "jpeg":
+      return "image/jpeg";
+    case "png":
+      return "image/png";
+    case "gif":
+      return "image/gif";
+    case "webp":
+      return "image/webp";
+    case "svg":
+      return "image/svg+xml";
     default:
-      return 'image/png';
+      return "image/png";
   }
 }
 
@@ -88,17 +95,19 @@ export function getArticlesForRSS(limit: number = 20) {
     .slice(0, limit)
     .map((article) => {
       const imageUrl = article.ogImage || article.image;
-      
+
       return {
         ...article,
         url: buildArticleRSSUrl(article.year, article.slug),
         pubDate: new Date(article.date).toUTCString(),
         author: `${profileData.profile.email || ""} (${PROFILE_NAME})`,
-        imageData: imageUrl ? {
-          url: imageUrl,
-          type: getImageMimeType(imageUrl),
-          length: 512000
-        } : null,
+        imageData: imageUrl
+          ? {
+              url: imageUrl,
+              type: getImageMimeType(imageUrl),
+              length: 512000,
+            }
+          : null,
       };
     });
 }

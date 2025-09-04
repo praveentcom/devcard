@@ -318,12 +318,24 @@ export function parseMarkdown(content: string): string {
 
   processedContent = processedContent
     .replace(
+      /^###### (.*$)/gim,
+      '<h6 class="text-xs font-medium mb-3 mt-2 leading-relaxed">$1</h6>',
+    )
+    .replace(
+      /^##### (.*$)/gim,
+      '<h5 class="text-sm font-medium mb-3 mt-2 leading-relaxed">$1</h5>',
+    )
+    .replace(
+      /^#### (.*$)/gim,
+      '<h4 class="text-sm font-medium mb-3 mt-3 leading-relaxed">$1</h4>',
+    )
+    .replace(
       /^### (.*$)/gim,
-      '<h3 class="text-sm font-medium mb-2 mt-4 leading-relaxed">$1</h3>',
+      '<h3 class="text-sm font-medium mb-3 mt-4 leading-relaxed">$1</h3>',
     )
     .replace(
       /^## (.*$)/gim,
-      '<h2 class="text-base font-medium mb-2 mt-5 leading-relaxed">$1</h2>',
+      '<h2 class="text-base font-medium mb-3 mt-5 leading-relaxed">$1</h2>',
     )
     .replace(
       /^# (.*$)/gim,
@@ -335,6 +347,7 @@ export function parseMarkdown(content: string): string {
     )
     .replace(/\*\*(.*?)\*\*/g, '<strong class="font-medium">$1</strong>')
     .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+    .replace(/\_(.*?)\_/g, '<em class="italic">$1</em>')
     .replace(/~~(.*?)~~/g, '<del class="line-through opacity-75">$1</del>')
     .replace(
       /!\[([^\]]*)\]\(([^)]+)\)/g,
@@ -351,15 +364,15 @@ export function parseMarkdown(content: string): string {
     );
 
   processedContent = processedContent
-    .replace(/\n\n/g, '</p><p class="mb-2 text-sm leading-relaxed">')
+    .replace(/\n\n/g, '</p><p class="mb-3 text-sm leading-relaxed">')
     .replace(
       /^(?!<[h|l|p|c|b|i|d|_])/gm,
-      '<p class="mb-2 text-sm leading-relaxed">',
+      '<p class="mb-3 text-sm leading-relaxed">',
     )
     .replace(/(?<!>)$/gm, "</p>")
-    .replace(/<p class="mb-2 text-sm leading-relaxed"><\/p>/g, "")
+    .replace(/<p class="mb-3 text-sm leading-relaxed"><\/p>/g, "")
     .replace(
-      /<p class="mb-2 text-sm leading-relaxed">(<[h|l|p|c|b|i|d])/g,
+      /<p class="mb-3 text-sm leading-relaxed">(<[h|l|p|c|b|i|d])/g,
       "$1",
     );
 

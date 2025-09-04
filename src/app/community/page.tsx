@@ -85,7 +85,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const metadata = createPageMetadata({
     title: `Community contributions`,
     description: communityData.descriptionLine1,
-    keywords: ["community", "talks", "presentations", "conferences", "workshops", "speaking", "developer community"],
+    keywords: [
+      "community",
+      "talks",
+      "presentations",
+      "conferences",
+      "workshops",
+      "speaking",
+      "developer community",
+    ],
     url: URLS.COMMUNITY_LIST(),
     image: getRouteSeoImage(URLS.COMMUNITY_LIST()),
   });
