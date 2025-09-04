@@ -138,16 +138,6 @@ function parseMarkdown(content: string): string {
     );
 
   /**
-   * Sequence: Replace the code block placeholders
-   */
-  codeBlocks.forEach((codeBlock, index) => {
-    processedContent = processedContent.replace(
-      `CODEBLOCK${index}`,
-      codeBlock,
-    );
-  });
-
-  /**
    * Sequence: Process blockquotes
    */
   processedContent = processBlockquotes(processedContent);
@@ -193,6 +183,16 @@ function parseMarkdown(content: string): string {
    */
   escapeMap.forEach((char, placeholder) => {
     processedContent = processedContent.replaceAll(placeholder, char);
+  });
+
+  /**
+   * Sequence: Replace the code block placeholders
+   */
+  codeBlocks.forEach((codeBlock, index) => {
+    processedContent = processedContent.replace(
+      `CODEBLOCK${index}`,
+      codeBlock,
+    );
   });
 
   /**
