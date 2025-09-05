@@ -47,7 +47,7 @@
   "dependencies": {
     "@bprogress/next": "^3.2.12",
     "@mdx-js/loader": "^3.1.0",
-    "@mdx-js/react": "^3.1.0",
+    "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^15.4.7",
     "passport-ui": "^1.0.2",
     "@tailwindcss/postcss": "^4.1.13",
