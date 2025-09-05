@@ -3,13 +3,13 @@ import path from "node:path";
 
 import { Metadata } from "next";
 
-import { PageWithStructuredData } from "@/components/ui/common";
-import EmptyPlaceholderCard from "@/components/ui/empty-placeholder-card";
-import { Markdown } from "@/components/ui/markdown";
-import { URLS } from "@/lib/constants";
-import { getRouteSeoImage } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
-import { generateDefaultSchema } from "@/lib/helpers/structured-data";
+import { Markdown } from "@/components/common/markdown";
+import { getRouteSeoImage } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { generateDefaultSchema } from "@/components/helpers/structured-data";
+import { URLS } from "@/components/helpers/urls";
+import { PageWithStructuredData } from "@/ui/client";
+import { PlaceholderCard } from "@/ui/client";
 
 export default function CoverPage() {
   const coverPath = path.join(
@@ -36,7 +36,7 @@ export default function CoverPage() {
         {hasCoverFile && coverContent ? (
           <Markdown content={coverContent} muted />
         ) : (
-          <EmptyPlaceholderCard />
+          <PlaceholderCard />
         )}
       </div>
     </PageWithStructuredData>

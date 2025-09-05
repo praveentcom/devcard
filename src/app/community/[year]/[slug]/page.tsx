@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { CommunityHeader } from "@/components/community/CommunityHeader";
-import { BackButton, PageWithStructuredData } from "@/components/ui/common";
-import { Markdown } from "@/components/ui/markdown";
-import { URLS } from "@/lib/constants/urls";
+import { Markdown } from "@/components/common/markdown";
+import { CommunityHeader } from "@/components/community/community-header";
 import {
   getAllCommunitySlugs,
   getCommunityBySlugRaw,
-} from "@/lib/helpers/community";
+} from "@/components/helpers/community";
 import {
   createNotFoundMetadata,
   createPageMetadata,
-} from "@/lib/helpers/metadata";
-import { generateCommunitySchema } from "@/lib/helpers/structured-data";
+} from "@/components/helpers/metadata";
+import { generateCommunitySchema } from "@/components/helpers/structured-data";
+import { URLS } from "@/components/helpers/urls";
+import { BackButton, PageWithStructuredData } from "@/ui/client";
 
 interface PageProps {
   params: Promise<{

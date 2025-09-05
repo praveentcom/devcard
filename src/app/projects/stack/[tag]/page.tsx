@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import pluralize from "pluralize";
 
-import { ProjectSummaryCard } from "@/components/projects/ProjectSummaryCard";
-import { BackButton, PageWithStructuredData } from "@/components/ui/common";
-import EmptyPlaceholderCard from "@/components/ui/empty-placeholder-card";
+import { getRouteSeoImage } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { getTagImagePath } from "@/components/helpers/tag-mapper";
+import { URLS } from "@/components/helpers/urls";
+import { ProjectSummaryCard } from "@/components/projects/project-summary-card";
 import { profileData } from "@/data/profile";
-import { URLS } from "@/lib/constants/urls";
-import { getRouteSeoImage } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
-import { getTagImagePath } from "@/lib/helpers/tag-mapper";
+import { BackButton, PageWithStructuredData } from "@/ui/client";
+import { PlaceholderCard } from "@/ui/client";
 
 interface PageProps {
   params: Promise<{
@@ -72,7 +72,7 @@ export default async function TagProjectsPage({ params }: PageProps) {
             ))}
           </div>
         ) : (
-          <EmptyPlaceholderCard />
+          <PlaceholderCard />
         )}
       </div>
     </PageWithStructuredData>

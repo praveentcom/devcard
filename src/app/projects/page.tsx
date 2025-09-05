@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
-import { ProjectSummaryCard } from "@/components/projects/ProjectSummaryCard";
-import { PageWithStructuredData } from "@/components/ui/common";
-import EmptyPlaceholderCard from "@/components/ui/empty-placeholder-card";
+import { getRouteSeoImage } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { URLS } from "@/components/helpers/urls";
+import { ProjectSummaryCard } from "@/components/projects/project-summary-card";
 import { profileData } from "@/data/profile";
-import { URLS } from "@/lib/constants/urls";
-import { getRouteSeoImage } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
+import { PageWithStructuredData } from "@/ui/client";
+import { PlaceholderCard } from "@/ui/client";
 
 export default function ProjectsPage() {
   return (
@@ -28,7 +28,7 @@ export default function ProjectsPage() {
             ))}
           </div>
         ) : (
-          <EmptyPlaceholderCard />
+          <PlaceholderCard />
         )}
       </div>
     </PageWithStructuredData>

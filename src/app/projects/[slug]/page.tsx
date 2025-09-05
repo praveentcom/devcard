@@ -3,24 +3,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
-import {
-  BackButton,
-  BulletList,
-  EntityHeader,
-  MetaCard,
-  PageWithStructuredData,
-} from "@/components/ui/common";
-import { TagBadge } from "@/components/ui/tag-badge";
-import { profileData } from "@/data/profile";
-import { URLS } from "@/lib/constants/urls";
-import { PROFILE_NAME } from "@/lib/helpers/config";
-import { formatDateShort } from "@/lib/helpers/date";
+import EntityHeader from "@/components/common/entity-header";
+import { TagBadge } from "@/components/common/tag-badge";
+import { PROFILE_NAME } from "@/components/helpers/config";
+import { formatDateShort } from "@/components/helpers/date";
 import {
   createNotFoundMetadata,
   createPageMetadata,
-} from "@/lib/helpers/metadata";
-import { generateProjectSchema } from "@/lib/helpers/structured-data";
+} from "@/components/helpers/metadata";
+import { generateProjectSchema } from "@/components/helpers/structured-data";
+import { URLS } from "@/components/helpers/urls";
+import { profileData } from "@/data/profile";
+import {
+  BackButton,
+  BulletList,
+  MetaCard,
+  PageWithStructuredData,
+} from "@/ui/client";
+import { Button } from "@/ui/client";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

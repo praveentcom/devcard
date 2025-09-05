@@ -3,16 +3,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { plural } from "pluralize";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-import { URLS } from "@/lib/constants";
-import { getArticleLabel } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
+import { getArticleLabel } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { URLS } from "@/components/helpers/urls";
+import { Button } from "@/ui/client";
+import { Card, CardContent, CardFooter, CardHeader } from "@/ui/client";
 
 const articleLabel = plural(getArticleLabel());
 

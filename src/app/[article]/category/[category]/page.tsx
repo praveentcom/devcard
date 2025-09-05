@@ -2,16 +2,19 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { plural } from "pluralize";
 
-import { ArticleSummaryCard } from "@/components/article/ArticleSummaryCard";
-import { BackButton, PageWithStructuredData } from "@/components/ui/common";
-import EmptyPlaceholderCard from "@/components/ui/empty-placeholder-card";
-import { URLS } from "@/lib/constants/urls";
-import { getAllCategories, getArticlesByCategory } from "@/lib/helpers/article";
-import { getArticleLabel, getRouteSeoImage } from "@/lib/helpers/config";
+import { ArticleSummaryCard } from "@/components/article/article-summary-card";
+import {
+  getAllCategories,
+  getArticlesByCategory,
+} from "@/components/helpers/article";
+import { getArticleLabel, getRouteSeoImage } from "@/components/helpers/config";
 import {
   createNotFoundMetadata,
   createPageMetadata,
-} from "@/lib/helpers/metadata";
+} from "@/components/helpers/metadata";
+import { URLS } from "@/components/helpers/urls";
+import { BackButton, PageWithStructuredData } from "@/ui/client";
+import { PlaceholderCard } from "@/ui/client";
 
 interface PageProps {
   params: Promise<{
@@ -54,7 +57,7 @@ export default async function CategoryArticlePage({ params }: PageProps) {
             ))}
           </div>
         ) : (
-          <EmptyPlaceholderCard />
+          <PlaceholderCard />
         )}
       </div>
     </PageWithStructuredData>

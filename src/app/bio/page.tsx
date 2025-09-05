@@ -1,15 +1,15 @@
 import { Metadata } from "next";
 
-import { AboutSection } from "@/components/sections/AboutSection";
-import { EducationSection } from "@/components/sections/EducationSection";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { WorkExperienceSection } from "@/components/sections/WorkExperienceSection";
-import { BackButton, PageWithStructuredData } from "@/components/ui/common";
+import { getRouteSeoImage } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { generateDefaultSchema } from "@/components/helpers/structured-data";
+import { URLS } from "@/components/helpers/urls";
+import { AboutSection } from "@/components/sections/about-section";
+import { EducationSection } from "@/components/sections/education-section";
+import { ProjectsSection } from "@/components/sections/projects-section";
+import { WorkExperienceSection } from "@/components/sections/work-experience-section";
 import { profileData } from "@/data/profile";
-import { URLS } from "@/lib/constants";
-import { getRouteSeoImage } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
-import { generateDefaultSchema } from "@/lib/helpers/structured-data";
+import { BackButton, PageWithStructuredData } from "@/ui/client";
 
 export default function BioPage() {
   return (

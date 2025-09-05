@@ -3,14 +3,14 @@ import path from "node:path";
 
 import type { Metadata } from "next";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { BackButton, PageWithStructuredData } from "@/components/ui/common";
-import EmptyPlaceholderCard from "@/components/ui/empty-placeholder-card";
-import { Markdown } from "@/components/ui/markdown";
-import { URLS } from "@/lib/constants";
-import { getRouteSeoImage } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
-import { generateDefaultSchema } from "@/lib/helpers/structured-data";
+import { Markdown } from "@/components/common/markdown";
+import { getRouteSeoImage } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { generateDefaultSchema } from "@/components/helpers/structured-data";
+import { URLS } from "@/components/helpers/urls";
+import { BackButton, PageWithStructuredData } from "@/ui/client";
+import { PlaceholderCard } from "@/ui/client";
+import { Card, CardContent } from "@/ui/client";
 
 export default function AboutPage() {
   const aboutPath = path.join(process.cwd(), "data", "profile", "about.md");
@@ -37,7 +37,7 @@ export default function AboutPage() {
             </CardContent>
           </Card>
         ) : (
-          <EmptyPlaceholderCard />
+          <PlaceholderCard />
         )}
       </div>
     </PageWithStructuredData>

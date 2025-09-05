@@ -1,19 +1,19 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import { ArticlesSection } from "@/components/sections/ArticlesSection";
-import { CommunitySection } from "@/components/sections/CommunitySection";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { Button } from "@/components/ui/button";
-import { PageWithStructuredData } from "@/components/ui/common";
+import { getAllArticlesIndex } from "@/components/helpers/article";
+import { getAllCommunityIndex } from "@/components/helpers/community";
+import { SITE_DESCRIPTION, SITE_IMAGE } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { generateDefaultSchema } from "@/components/helpers/structured-data";
+import { URLS } from "@/components/helpers/urls";
+import { ArticlesSection } from "@/components/sections/articles-section";
+import { CommunitySection } from "@/components/sections/community-section";
+import { ProjectsSection } from "@/components/sections/projects-section";
 import { configData } from "@/data/config";
 import { profileData } from "@/data/profile";
-import { URLS } from "@/lib/constants";
-import { getAllArticlesIndex } from "@/lib/helpers/article";
-import { getAllCommunityIndex } from "@/lib/helpers/community";
-import { SITE_DESCRIPTION, SITE_IMAGE } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
-import { generateDefaultSchema } from "@/lib/helpers/structured-data";
+import { PageWithStructuredData } from "@/ui/client";
+import { Button } from "@/ui/client";
 
 const recentArticles = getAllArticlesIndex(6);
 const recentContributions = getAllCommunityIndex(6);

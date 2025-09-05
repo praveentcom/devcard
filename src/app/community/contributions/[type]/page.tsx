@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import pluralize from "pluralize";
 
-import { CommunitySummaryCard } from "@/components/community/CommunitySummaryCard";
-import { BackButton, PageWithStructuredData } from "@/components/ui/common";
-import EmptyPlaceholderCard from "@/components/ui/empty-placeholder-card";
-import { URLS } from "@/lib/constants";
-import { getAllCommunityIndex } from "@/lib/helpers/community";
-import { getRouteSeoImage } from "@/lib/helpers/config";
+import { CommunitySummaryCard } from "@/components/community/community-summary-card";
+import { getAllCommunityIndex } from "@/components/helpers/community";
+import { getRouteSeoImage } from "@/components/helpers/config";
 import {
   createNotFoundMetadata,
   createPageMetadata,
-} from "@/lib/helpers/metadata";
+} from "@/components/helpers/metadata";
+import { URLS } from "@/components/helpers/urls";
 import { EnumCommunityContributionType } from "@/types/community";
+import { BackButton, PageWithStructuredData } from "@/ui/client";
+import { PlaceholderCard } from "@/ui/client";
 
 interface PageProps {
   params: Promise<{
@@ -75,7 +75,7 @@ export default async function CommunityByTypePage({ params }: PageProps) {
             ))}
           </div>
         ) : (
-          <EmptyPlaceholderCard />
+          <PlaceholderCard />
         )}
       </div>
     </PageWithStructuredData>

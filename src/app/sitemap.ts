@@ -1,9 +1,9 @@
 import { MetadataRoute } from "next";
 
+import { getAllArticlesIndex } from "@/components/helpers/article";
+import { getAllCommunityIndex } from "@/components/helpers/community";
+import { BASE_URL, URLS } from "@/components/helpers/urls";
 import { profileData } from "@/data/profile";
-import { BASE_URL, URLS } from "@/lib/constants";
-import { getAllArticlesIndex } from "@/lib/helpers/article";
-import { getAllCommunityIndex } from "@/lib/helpers/community";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   /**

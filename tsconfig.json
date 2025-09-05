@@ -20,7 +20,8 @@
     ],
     "paths": {
       "@/data/*": ["./data/*"],
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/ui/*": ["./node_modules/passport-ui/dist/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

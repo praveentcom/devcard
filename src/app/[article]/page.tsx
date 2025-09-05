@@ -2,15 +2,18 @@ import { Calendar, Folders, PencilLine } from "lucide-react";
 import type { Metadata } from "next";
 import { plural } from "pluralize";
 
-import { ArticleSummaryCard } from "@/components/article/ArticleSummaryCard";
-import { CategoryBadge } from "@/components/ui/category-badge";
-import { PageWithStructuredData } from "@/components/ui/common";
-import EmptyPlaceholderCard from "@/components/ui/empty-placeholder-card";
-import { YearBadge } from "@/components/ui/year-badge";
-import { URLS } from "@/lib/constants";
-import { getAllArticleSlugs, getAllCategories } from "@/lib/helpers/article";
-import { getArticleLabel, getRouteSeoImage } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
+import { ArticleSummaryCard } from "@/components/article/article-summary-card";
+import { CategoryBadge } from "@/components/article/category-badge";
+import { YearBadge } from "@/components/common/year-badge";
+import {
+  getAllArticleSlugs,
+  getAllCategories,
+} from "@/components/helpers/article";
+import { getArticleLabel, getRouteSeoImage } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { URLS } from "@/components/helpers/urls";
+import { PageWithStructuredData } from "@/ui/client";
+import { PlaceholderCard } from "@/ui/client";
 
 const articleLabel = plural(getArticleLabel());
 
@@ -84,7 +87,7 @@ export default function ArticlesListPage() {
             </div>
           </div>
         ) : (
-          <EmptyPlaceholderCard />
+          <PlaceholderCard />
         )}
       </div>
     </PageWithStructuredData>

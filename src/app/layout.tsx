@@ -3,18 +3,21 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { Analytics } from "@/components/analytics/Analytics";
-import { WebVitals } from "@/components/analytics/WebVitals";
+import Providers from "@/app/providers";
+import { Analytics } from "@/components/analytics/analytics";
+import { WebVitals } from "@/components/analytics/web-vitals";
+import { Footer } from "@/components/common/footer";
+import { Header } from "@/components/common/header";
+import {
+  SITE_DESCRIPTION,
+  SITE_IMAGE,
+  SITE_TITLE,
+} from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { BASE_URL, URLS } from "@/components/helpers/urls";
 import { PrefetchProvider } from "@/components/providers/prefetch-provider";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import { Footer } from "@/components/ui/footer";
-import { Header } from "@/components/ui/header";
 import { configData } from "@/data/config";
-import { BASE_URL, URLS } from "@/lib/constants";
-import { SITE_DESCRIPTION, SITE_IMAGE, SITE_TITLE } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
-
-import Providers from "./providers";
+import { ThemeProvider } from "@/ui/client";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

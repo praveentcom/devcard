@@ -2,7 +2,7 @@ import withBundleAnalyzer from "@next/bundle-analyzer";
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
-import { getEnvConfig } from "./src/lib/helpers/env-config";
+import { getEnvConfig } from "@/components/helpers/env-config";
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
@@ -16,13 +16,18 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: {
     optimizePackageImports: [
-      "@radix-ui/react-icons",
       "lucide-react",
       "highlight.js",
       "framer-motion",
-      "motion",
       "date-fns",
     ],
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@/ui": "passport-ui",
+    };
+    return config;
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",

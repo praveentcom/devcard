@@ -1,5 +1,8 @@
-import { PROFILE_NAME } from "@/lib/helpers/config";
-import { getArticlesForRSS, getRSSFeedMetadata } from "@/lib/helpers/rss";
+import { PROFILE_NAME } from "@/components/helpers/config";
+import {
+  getArticlesForRSS,
+  getRSSFeedMetadata,
+} from "@/components/helpers/rss";
 
 /**
  * Generate RSS feed XML for articles

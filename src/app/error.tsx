@@ -4,15 +4,10 @@ import { Home, Newspaper } from "lucide-react";
 import Link from "next/link";
 import { plural } from "pluralize";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-import { URLS } from "@/lib/constants/urls";
-import { getArticleLabel } from "@/lib/helpers/config";
+import { getArticleLabel } from "@/components/helpers/config";
+import { URLS } from "@/components/helpers/urls";
+import { Card, CardContent, CardFooter, CardHeader } from "@/ui/client";
+import { Button } from "@/ui/client";
 
 const articleLabel = plural(getArticleLabel());
 

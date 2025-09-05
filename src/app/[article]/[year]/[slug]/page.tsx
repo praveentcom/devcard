@@ -2,17 +2,20 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { plural } from "pluralize";
 
-import { ArticleHeader } from "@/components/article/ArticleHeader";
-import { BackButton, PageWithStructuredData } from "@/components/ui/common";
-import { Markdown } from "@/components/ui/markdown";
-import { URLS } from "@/lib/constants/urls";
-import { getAllArticleSlugs, getArticleBySlugRaw } from "@/lib/helpers/article";
-import { getArticleLabel } from "@/lib/helpers/config";
+import { ArticleHeader } from "@/components/article/article-header";
+import { Markdown } from "@/components/common/markdown";
+import {
+  getAllArticleSlugs,
+  getArticleBySlugRaw,
+} from "@/components/helpers/article";
+import { getArticleLabel } from "@/components/helpers/config";
 import {
   createNotFoundMetadata,
   createPageMetadata,
-} from "@/lib/helpers/metadata";
-import { generateArticleSchema } from "@/lib/helpers/structured-data";
+} from "@/components/helpers/metadata";
+import { generateArticleSchema } from "@/components/helpers/structured-data";
+import { URLS } from "@/components/helpers/urls";
+import { BackButton, PageWithStructuredData } from "@/ui/client";
 
 interface PageProps {
   params: Promise<{

@@ -1,15 +1,15 @@
 import { Calendar, HeartHandshake } from "lucide-react";
 import type { Metadata } from "next";
 
-import { CommunitySummaryCard } from "@/components/community/CommunitySummaryCard";
-import { PageWithStructuredData } from "@/components/ui/common";
-import EmptyPlaceholderCard from "@/components/ui/empty-placeholder-card";
-import { YearBadge } from "@/components/ui/year-badge";
+import { YearBadge } from "@/components/common/year-badge";
+import { CommunitySummaryCard } from "@/components/community/community-summary-card";
+import { getAllCommunitySlugs } from "@/components/helpers/community";
+import { getRouteSeoImage } from "@/components/helpers/config";
+import { createPageMetadata } from "@/components/helpers/metadata";
+import { URLS } from "@/components/helpers/urls";
 import { communityData } from "@/data/community";
-import { URLS } from "@/lib/constants";
-import { getAllCommunitySlugs } from "@/lib/helpers/community";
-import { getRouteSeoImage } from "@/lib/helpers/config";
-import { createPageMetadata } from "@/lib/helpers/metadata";
+import { PageWithStructuredData } from "@/ui/client";
+import { PlaceholderCard } from "@/ui/client";
 
 export default function CommunityPage() {
   const publishedContributions = getAllCommunitySlugs();
@@ -74,7 +74,7 @@ export default function CommunityPage() {
             </div>
           </div>
         ) : (
-          <EmptyPlaceholderCard />
+          <PlaceholderCard />
         )}
       </div>
     </PageWithStructuredData>

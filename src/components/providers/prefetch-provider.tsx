@@ -1,6 +1,6 @@
 "use client";
 
-import { useCriticalPrefetch } from "@/lib/hooks/use-prefetch";
+import { useCriticalPrefetch } from "../helpers/use-prefetch";
 
 interface PrefetchProviderProps {
   children: React.ReactNode;

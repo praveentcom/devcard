@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import {
-  BackButton,
-  BulletList,
-  DateRange,
-  EntityHeader,
-  MetaCard,
-  PageWithStructuredData,
-} from "@/components/ui/common";
-import { TagBadge } from "@/components/ui/tag-badge";
-import { profileData } from "@/data/profile";
-import { URLS } from "@/lib/constants/urls";
-import { formatDateShort } from "@/lib/helpers/date";
+import { DateRange } from "@/components/common/date-range";
+import EntityHeader from "@/components/common/entity-header";
+import { TagBadge } from "@/components/common/tag-badge";
+import { formatDateShort } from "@/components/helpers/date";
 import {
   createNotFoundMetadata,
   createPageMetadata,
-} from "@/lib/helpers/metadata";
-import { findBySlug, generateSlugParams } from "@/lib/helpers/page";
-import { generateWorkSchema } from "@/lib/helpers/structured-data";
+} from "@/components/helpers/metadata";
+import { findBySlug, generateSlugParams } from "@/components/helpers/page";
+import { generateWorkSchema } from "@/components/helpers/structured-data";
+import { URLS } from "@/components/helpers/urls";
+import { profileData } from "@/data/profile";
+import {
+  BackButton,
+  BulletList,
+  MetaCard,
+  PageWithStructuredData,
+} from "@/ui/client";
 
 interface PageProps {
   params: Promise<{
