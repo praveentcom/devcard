@@ -2,7 +2,7 @@ import withBundleAnalyzer from "@next/bundle-analyzer";
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
-import { getEnvConfig } from "@/components/helpers/env-config";
+import { getEnvConfig } from "./src/components/helpers/env-config";
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
