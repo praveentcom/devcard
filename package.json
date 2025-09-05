@@ -53,7 +53,7 @@
     "@tailwindcss/postcss": "^4.1.13",
     "@types/mdx": "^2.0.13",
     "@types/pluralize": "^0.0.33",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "isomorphic-dompurify": "^2.26.0",
