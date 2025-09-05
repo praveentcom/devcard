@@ -4,10 +4,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import Providers from "@/app/providers";
-import { Analytics } from "@/components/analytics/analytics";
-import { WebVitals } from "@/components/analytics/web-vitals";
 import { Footer } from "@/components/common/footer";
 import { Header } from "@/components/common/header";
+import { Analytics } from "@/components/helpers/analytics";
 import {
   SITE_DESCRIPTION,
   SITE_IMAGE,
@@ -15,6 +14,7 @@ import {
 } from "@/components/helpers/config";
 import { createPageMetadata } from "@/components/helpers/metadata";
 import { BASE_URL, URLS } from "@/components/helpers/urls";
+import { WebVitals } from "@/components/helpers/web-vitals";
 import { PrefetchProvider } from "@/components/providers/prefetch-provider";
 import { configData } from "@/data/config";
 import { ThemeProvider } from "@/ui/client";
