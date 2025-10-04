@@ -1,0 +1,86 @@
+{
+  "name": "devcard",
+  "version": "1.5.0",
+  "license": "MIT",
+  "author": "Praveen Thirumurugan",
+  "engines": {
+    "node": "^22.0.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    "last 2 Opera versions",
+    "last 2 ChromeAndroid versions",
+    "last 2 iOS versions"
+  ],
+  "description": "A modern, customizable developer profile spotlight landing page built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui components.",
+  "keywords": [
+    "developer",
+    "profile",
+    "landing page"
+  ],
+  "homepage": "https://devcard.praveent.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/praveentcom/devcard"
+  },
+  "bugs": {
+    "url": "https://github.com/praveentcom/devcard/issues"
+  },
+  "contributors": [
+    {
+      "name": "Praveen Thirumurugan",
+      "email": "mail@praveent.com",
+      "url": "https://github.com/praveentcom"
+    }
+  ],
+  "scripts": {
+    "dev": "./scripts/dev.sh",
+    "build": "next build",
+    "start": "./scripts/start.sh",
+    "lint": "eslint .",
+    "format": "eslint --fix . && prettier --write .",
+    "init": "./scripts/init.sh"
+  },
+  "dependencies": {
+    "@bprogress/next": "^3.2.12",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/bundle-analyzer": "^15.5.3",
+    "@next/mdx": "^15.4.7",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/mdx": "^2.0.13",
+    "@types/pluralize": "^0.0.33",
+    "date-fns": "^3.6.0",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
+    "isomorphic-dompurify": "^2.26.0",
+    "lucide-react": "^0.542.0",
+    "next": "15.5.3",
+    "next-mdx-remote": "^5.0.0",
+    "passport-ui": "^1.0.63",
+    "pluralize": "^8.0.0",
+    "prettier": "^3.6.2",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.1.13",
+    "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9.37.0",
+    "eslint-config-next": "15.5.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "typescript": "^5"
+  }
+}

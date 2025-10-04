@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@source "../../node_modules/passport-ui/src";
+@import "passport-ui/styles.css";
+
+@import "passport-ui/hljs-themes.css";
