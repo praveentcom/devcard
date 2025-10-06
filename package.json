@@ -59,7 +59,7 @@
     "highlight.js": "^11.11.1",
     "isomorphic-dompurify": "^2.26.0",
     "lucide-react": "^0.542.0",
-    "next": "15.5.3",
+    "next": "15.5.4",
     "next-mdx-remote": "^5.0.0",
     "passport-ui": "^1.0.64",
     "pluralize": "^8.0.0",
